@@ -1,0 +1,6 @@
+sink(file = "package-versions.txt")
+sessionInfo()
+sink()
+
+ggplot2 3.5.1
+gridExtra 2.3
