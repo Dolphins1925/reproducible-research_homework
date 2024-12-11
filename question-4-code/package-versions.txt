@@ -4,3 +4,4 @@ sink()
 
 ggplot2 3.5.1
 gridExtra 2.3
+dplyr 1.1.4
