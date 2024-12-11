@@ -2,6 +2,29 @@
 
 \# INSERT ANSWERS HERE #
 
+4. a) The graphs show examples of Brownian motion- small and random changes in direction which create unique paths each time that the code is run. The random nature of the paths create areas of denser and sparser lines, often leaving large areas of white space. The line starts on the same coordinates each time (0,0), but the axes may be different on the graphs. The code also embeds another element of time, another random function which is represented in shades of blue in the graphs. The darker the blue, the less time is spent on a particular part of the path.
+4. b) The random seeds term allows for a psuedo-random number to be generated. A seed is required to generate these numbers and are already stored in R. For example, in this code, a number is generated to create the path, which appears to be unqiue each time. In reality, this random number generation is deterministic, simply setting the seed as a specific number, the same path is generated again. This function allows for reproducibility within any simulation or analysis which calls for randomisation.
+4. c) The script has been edited, commited and pushed to the repo. The changes include a seed argument so that the seed can be set, two seed values set for reproducibility, and notes within the code and on the graphs to allow people accessing the code to undertand how the graohs have been produced.
+4. d)
+![image](https://github.com/user-attachments/assets/a21451bd-7e14-452c-90ca-d44d08030ac9)
+![image](https://github.com/user-attachments/assets/77594a6a-9588-4ea8-8233-545796f21044)
+![image](https://github.com/user-attachments/assets/6bdf147a-530b-48dd-8b5f-2e707d54b1c7)
+
+5. a) Data for double-stranded DNA viruses uploaded. The table has 33 rows and 13 columns.
+5. b) For this particular dataset, log-transforming both the Genome length (kb) and the Virion Volume (nm^3) allows for a linear model to be applied. I have applied this transformation in the script entitled **question-5-code.R** where a line can be fitted through. When checking the residuals on a Q-Q residuals plot, the fit is not perfect but is relatively good so we can still assume normality for any futher anlysis on the log-transformed data.
+5. c) The exponent (β) can be taken as the regression line for this model, annotated as the log-genome size coefficient in our model. This is 1.515228 in our model with a p-value of 6.44e-10, making this value significant and with confidence interval 1.163426 - 1.867030. The value in the paper is 1.52 (1.16–1.87), which is the same as the value I calculated from my model. The confidence intervals that we calculated are also the same, considering rounding. The scaling factor (α) can be taken as the intercept of the regression line, which needs to have the exponential taken to state the exact value. My model shows that ln(α) is 7.0748, and so α is 1181.807 with a p-value of 2.28e-10, making this value significant and with confidence interval 246.1069 – 5675.04389. The value in the paper is 1,182 (246–5,675), which is similarly identical to my value and confidence intervals. To conclude, I found the same values in my model as in the paper (when taking into account the rounding performed in the paper).
+5. d) Code can also be found in the Rscript **question-5-code.R**
+# Create the scatter plot with the regression line
+ggplot(Cui_etal2014, aes(x = log_genome_size, y = log_volume)) +
+  geom_point() +  # scatter plot
+  geom_smooth(method = "lm", color = "blue", fill = "gray") +  # linear regression with confidence interval
+  labs(
+    x = "log [Genome length (kb)]",
+    y = "log [Virion volume (nm³)]"
+  ) +
+  theme_minimal() # set theme the same as image
+5. e) The estimated volume of a 300kb dsDNA virus using the allometric equation V= αL^β, where V is the virion volume in nm^3, L is the genome length in nucleotides (300kb is equal to 300,000 nucleotides), alpha is 1181.807, and beta is 1.515228, is equal to 2.353×10^11 (235,306,564,197)nm^3.
+
 ## Instructions
 
 The homework for this Computer skills practical is divided into 5 questions for a total of 100 points. First, fork this repo and make sure your fork is made **Public** for marking. Answers should be added to the # INSERT ANSWERS HERE # section above in the **README.md** file of your forked repository.
