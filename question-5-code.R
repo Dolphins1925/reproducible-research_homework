@@ -1,4 +1,4 @@
-#QUESTION 5d CODE ON LINES 70-83
+#QUESTION 5d CODE ON LINES 81-94
 
 # Load relevant packages and install through the packages tab if needed
 library(dplyr)
@@ -93,7 +93,7 @@ ggplot(cui_clean, aes(x = log_genome_size, y = log_volume)) +
 
 ####################
 
-# Define parameters for estimayted volume of a 300kb dsDNA virus
+# Define parameters for estimated volume of a 300kb dsDNA virus
 alpha <- 1181.807
 beta <- 1.515228
 L <- 300000  # Genome length in nucleotides from kb
