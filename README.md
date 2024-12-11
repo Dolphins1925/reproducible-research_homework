@@ -2,6 +2,8 @@
 
 \# INSERT ANSWERS HERE #
 
+ANSWERS 1, 2 AND 3 ON README FILE IN LOGISTIC GROWTH REPO: https://github.com/Dolphins1925/logistic_growth/
+
 4. a) The graphs show examples of Brownian motion- small and random changes in direction which create unique paths each time that the code is run. The random nature of the paths create areas of denser and sparser lines, often leaving large areas of white space. The line starts on the same coordinates each time (0,0), but the axes may be different on the graphs. The code also embeds another element of time, another random function which is represented in shades of blue in the graphs. The darker the blue, the less time is spent on a particular part of the path.
 
 b) The random seeds term allows for a psuedo-random number to be generated. A seed is required to generate these numbers and are already stored in R. For example, in this code, a number is generated to create the path, which appears to be unqiue each time. In reality, this random number generation is deterministic, simply setting the seed as a specific number, the same path is generated again. This function allows for reproducibility within any simulation or analysis which calls for randomisation.
