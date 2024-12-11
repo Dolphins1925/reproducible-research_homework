@@ -20,6 +20,8 @@ b) For this particular dataset, log-transforming both the Genome length (kb) and
 c) The exponent (β) can be taken as the regression line for this model, annotated as the log-genome size coefficient in our model. This is 1.515228 in our model with a p-value of 6.44e-10, making this value significant and with confidence interval 1.163426 - 1.867030. The value in the paper is 1.52 (1.16–1.87), which is the same as the value I calculated from my model. The confidence intervals that we calculated are also the same, considering rounding. The scaling factor (α) can be taken as the intercept of the regression line, which needs to have the exponential taken to state the exact value. My model shows that ln(α) is 7.0748, and so α is 1181.807 with a p-value of 2.28e-10, making this value significant and with confidence interval 246.1069 – 5675.04389. The value in the paper is 1,182 (246–5,675), which is similarly identical to my value and confidence intervals. To conclude, I found the same values in my model as in the paper (when taking into account the rounding performed in the paper).
 
 d) Code can also be found in the Rscript **question-5-code.R**. Create the scatter plot with the regression line
+![image](https://github.com/user-attachments/assets/e9f44f47-0e84-4576-86bf-d04fcaf03cc2)
+
 ggplot(Cui_etal2014, aes(x = log_genome_size, y = log_volume)) +
   geom_point() +  # scatter plot
   geom_smooth(method = "lm", color = "blue", fill = "gray") +  # linear regression with confidence interval
