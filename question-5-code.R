@@ -67,6 +67,12 @@ beta
 p_values <- summary(model)$coefficients[, 4]
 p_values
 
+# confidence intervals
+conf_intervals <- confint(model)
+conf_intervals
+alpha_CI <- exp(conf_intervals[1, ])
+alpha
+
 ###################
 
 # QUESTION 5d)
@@ -85,7 +91,7 @@ ggplot(Cui_etal2014, aes(x = log_genome_size, y = log_volume)) +
 # Define parameters for estimayted volume of a 300kb dsDNA virus
 alpha <- 1181.807
 beta <- 1.515228
-L <- 300  # Genome length in kb
+L <- 300000  # Genome length in nucleotides from kb
 
 # Estimate virion volume (V)
 Volestimate <- alpha * (L ^ beta)
