@@ -3,7 +3,7 @@
 \# INSERT ANSWERS HERE #
 
 ANSWERS 1, 2 AND 3 ON README FILE IN LOGISTIC GROWTH REPO: 
-https://github.com/Dolphins1925/logistic_growth/tree/dev
+https://github.com/Dolphins1925/logistic_growth/
 
 4. a) The graphs show examples of Brownian motion- small and random changes in direction which create unique paths each time that the code is run. The random nature of the paths create areas of denser and sparser lines, often leaving large areas of white space. The line starts on the same coordinates each time (0,0), but the axes may be different on the graphs. The code also embeds another element of time, another random function which is represented in shades of blue in the graphs. The darker the blue, the less time is spent on a particular part of the path.
 
