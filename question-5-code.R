@@ -4,22 +4,27 @@
 library(dplyr)
 library(ggplot2)
 
-# Check that the data has been loaded in correctly
 head(Cui_etal2014)
 
+# make a copy of the original dataset to avoid overwriting
+cui_data <- Cui_etal2014
+
+# Check that the data has been loaded in correctly
+head(cui_data)
+
 # Check the number of rows and columns of the dataset
-nrow(Cui_etal2014)   # 33 rows
-ncol(Cui_etal2014) # 13 columns
+nrow(cui_data)   # 33 rows
+ncol(cui_data) # 13 columns
 # If code is ran a second time, the number of columns increases from 13 to 15
 # This is due to the added log-transformed columns
 
 # Check the names of the columns
 # Are the variables I need to use in a good form for R?
-colnames(Cui_etal2014)
+colnames(cui_data)
 
 # Make the names of Virion Volume and Genome Size cleaner
 # Rename both columns in one step
-Cui_etal2014 <- Cui_etal2014 %>%
+cui_clean <- cui_data %>%
   rename(
     virion_volume = `Virion volume (nmxnmxnm)`,
     genome_size = `Genome length (kb)`
@@ -27,20 +32,20 @@ Cui_etal2014 <- Cui_etal2014 %>%
 #  The dataset could be renamed so that the original is not overwritten
 
 # Check that R recognises these new names
-Cui_etal2014$genome_size
-Cui_etal2014$virion_volume
+cui_clean$genome_size
+cui_clean$virion_volume
 
 # Visualize the relationship between genome size (x) and volume (y)
-plot(Cui_etal2014$genome_size, Cui_etal2014$virion_volume, 
+plot(cui_clean$genome_size, cui_clean$virion_volume, 
      main = "Scatter Plot of Virion Volume vs Genome Size",
      xlab = "Genome Size", ylab = "Virion Volume", pch = 19)
 
 # Log transformation for volume and genome size to fit a linear model
-Cui_etal2014$log_volume <- log(Cui_etal2014$virion_volume)
-Cui_etal2014$log_genome_size <- log(Cui_etal2014$genome_size)
+cui_clean$log_volume <- log(cui_clean$virion_volume)
+cui_clean$log_genome_size <- log(cui_clean$genome_size)
 
 # Fit a linear model: Log-transformed volume predicted by genome size
-model <- lm(log_volume ~ log_genome_size, data = Cui_etal2014)
+model <- lm(log_volume ~ log_genome_size, data = cui_clean)
 
 # Summarize the model
 summary(model)
@@ -48,7 +53,7 @@ summary(model)
 # Log genome size 1.5152, p-value is significant
 
 # Visualise the fitted model
-plot(Cui_etal2014$log_genome_size, Cui_etal2014$log_volume, 
+plot(cui_clean$log_genome_size, cui_clean$log_volume, 
      main = "Log-Transformed Volume vs Log-Transformed Genome Size",
      xlab = "log(Genome Size)", ylab = "log(Volume)", pch = 19)
 abline(model, col = "red")
@@ -71,13 +76,13 @@ p_values
 conf_intervals <- confint(model)
 conf_intervals
 alpha_CI <- exp(conf_intervals[1, ])
-alpha
+alpha_CI
 
 ###################
 
 # QUESTION 5d)
 # Create the scatter plot with the regression line
-ggplot(Cui_etal2014, aes(x = log_genome_size, y = log_volume)) +
+ggplot(cui_clean, aes(x = log_genome_size, y = log_volume)) +
   geom_point() +  # scatter plot
   geom_smooth(method = "lm", color = "blue", fill = "gray") +  # linear regression with confidence interval
   labs(
